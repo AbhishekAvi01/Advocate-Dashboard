@@ -1,8 +1,3 @@
-// 
-
-
-
-
 import React from 'react';
 import { 
   ShieldAlert, ShieldX, HelpCircle, LayoutGrid, FileText, 
@@ -13,10 +8,10 @@ export default function FooterSection({ isCardBlocked, onBlockToggle }) {
   return (
     <div className="space-y-5 mt-5">
       
-      {/* Admin Panel, Actions, Features, and Emergency Controls Row */}
+      
       <div className="grid grid-cols-1 xl:grid-cols-4 gap-5 items-stretch">
         
-        {/* BAR COUNCIL ADMIN PANEL */}
+        
         <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
           <h4 className="text-xs font-bold uppercase tracking-wider text-purple-700 mb-3 border-b border-purple-100 pb-2">
             Bar Council Admin Panel
@@ -42,7 +37,7 @@ export default function FooterSection({ isCardBlocked, onBlockToggle }) {
           </div>
         </div>
 
-        {/* QUICK ACTIONS UTILITIES */}
+       
         <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
           <h4 className="text-xs font-bold uppercase tracking-wider text-blue-700 mb-3 border-b border-blue-100 pb-2">
             Quick Actions
@@ -77,7 +72,7 @@ export default function FooterSection({ isCardBlocked, onBlockToggle }) {
           </div>
         </div>
 
-        {/* SYSTEM FEATURES LIST */}
+        
         <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3 border-b border-slate-100 pb-2">
             System Features
@@ -100,7 +95,7 @@ export default function FooterSection({ isCardBlocked, onBlockToggle }) {
           </div>
         </div>
 
-        {/* EMERGENCY & SECURITY TRIGGERS (FULLY ACTIVE) */}
+        
         <div className={`bg-white border rounded-xl p-4 shadow-xs transition-all duration-300 ${
           isCardBlocked ? 'border-red-500 bg-red-50/20' : 'border-red-200'
         }`}>
@@ -109,7 +104,7 @@ export default function FooterSection({ isCardBlocked, onBlockToggle }) {
           </h4>
           <div className="space-y-2 h-[calc(100%-2rem)] flex flex-col justify-center">
             
-            {/* Dynamic Button changing functionality based on active lock state */}
+           
             <button 
               onClick={onBlockToggle}
               className={`w-full flex items-center justify-between p-2.5 rounded-lg border font-bold text-xs transition-colors shadow-xs ${
@@ -140,7 +135,6 @@ export default function FooterSection({ isCardBlocked, onBlockToggle }) {
 
       </div>
 
-      {/* FOOTER METADATA */}
       <footer className="bg-slate-900 text-slate-400 text-xs px-6 py-4 rounded-xl flex flex-col md:flex-row items-center justify-between gap-3 border border-slate-800">
         <p className="font-medium">
           © 2026 <span className="text-white font-bold">National Advocate Identity System</span>. All Rights Reserved.

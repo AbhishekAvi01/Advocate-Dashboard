@@ -6,10 +6,10 @@ export default function Modal({ isOpen, onClose, title, children }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
+    
       <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs" onClick={onClose} />
       
-      {/* Modal Box */}
+      
       <div className="bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-md overflow-hidden relative z-10 animate-in fade-in zoom-in-95 duration-200">
         <div className="px-4 py-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
           <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider">{title}</h3>
