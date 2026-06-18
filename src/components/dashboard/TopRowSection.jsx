@@ -1164,108 +1164,971 @@
 
 
 
-import React from 'react';
+// import React from 'react';
+// import CardWrapper from '../ui/CardWrapper';
+// import { 
+//   CheckCircle, Award, Scale, Landmark, FileText, 
+//   Shield, User, ShieldAlert, Wifi, ShieldX, QrCode 
+// } from 'lucide-react';
+
+// export default function TopRowSection({ isCardBlocked }) {
+//   return (
+//     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 items-stretch w-full">
+      
+//       {/* 1. ADVOCATE PROFILE BLOCK */}
+//       <CardWrapper title="Advocate Profile">
+//         <div className="flex flex-col justify-between h-full min-h-[230px] w-full overflow-hidden">
+//           <div className="flex gap-4 items-start w-full">
+//             {/* Avatar container slot */}
+//             <div className="relative shrink-0">
+//               <div className="w-18 h-22 sm:w-20 sm:h-24 bg-slate-100 rounded-lg border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
+//                 <User size={38} className="text-slate-400 mt-4" />
+//               </div>
+//               <span className={`absolute -bottom-2 left-1/2 -translate-x-1/2 text-[8px] sm:text-[9px] px-2.5 py-0.5 rounded font-bold uppercase tracking-wider shadow-xs border ${
+//                 isCardBlocked 
+//                   ? 'bg-red-100 border-red-200 text-red-700' 
+//                   : 'bg-emerald-100 border-emerald-200 text-emerald-700'
+//               }`}>
+//                 {isCardBlocked ? 'Suspended' : 'Active'}
+//               </span>
+//             </div>
+            
+//             {/* Context details container */}
+//             <div className="space-y-1 min-w-0 flex-1">
+//               <div className="flex items-center gap-1 max-w-full">
+//                 <h4 className="text-sm sm:text-base font-bold text-slate-900 tracking-tight truncate">Adv. Rohit Sharma</h4>
+//                 {!isCardBlocked && (
+//                   <CheckCircle size={14} className="text-blue-500 fill-blue-500 text-white shrink-0" />
+//                 )}
+//               </div>
+              
+//               <div className="text-[10px] sm:text-[11px] text-slate-500">
+//                 <p className="font-medium">Enrollment No.</p>
+//                 <p className="font-semibold text-slate-800 truncate">MH/4789/2012</p>
+//               </div>
+              
+//               <div className="text-[10px] sm:text-[11px] text-slate-500">
+//                 <p className="font-medium">Bar Council Reg. No.</p>
+//                 <p className="font-semibold text-slate-800 truncate">M/12345/2012</p>
+//               </div>
+
+//               <p className="text-[9px] sm:text-[10px] text-slate-400 font-bold leading-tight pt-0.5">
+//                 State Bar: <span className="text-slate-600 font-medium block truncate">Maharashtra Bar Council</span>
+//               </p>
+//             </div>
+//           </div>
+
+//           {/* Quick Metrics Multi-Row Responsive Grid */}
+//           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 border-t border-slate-100 pt-3 mt-4 text-center text-[10px] w-full">
+//             <div className="min-w-0 border-r border-slate-100 last:border-0 pb-1 sm:pb-0">
+//               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Practice Since</p>
+//               <p className="font-bold text-slate-800 mt-0.5">2012</p>
+//             </div>
+//             <div className="min-w-0 sm:border-r border-slate-100 last:border-0 pb-1 sm:pb-0">
+//               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Experience</p>
+//               <p className="font-bold text-slate-800 mt-0.5">12+ Years</p>
+//             </div>
+//             <div className="min-w-0 border-r border-slate-100 last:border-0">
+//               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Date of Enroll</p>
+//               <p className="font-bold text-slate-800 mt-0.5 whitespace-nowrap truncate">15 Aug 2012</p>
+//             </div>
+//             <div className="min-w-0">
+//               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Renewal Valid</p>
+//               <p className={`font-bold mt-0.5 truncate ${isCardBlocked ? 'text-red-600 line-through' : 'text-amber-600'}`}>
+//                 31 Dec 2025
+//               </p>
+//             </div>
+//           </div>
+//         </div>
+//       </CardWrapper>
+
+//       {/* 2. PROFESSIONAL CLASSIFICATION MODULE */}
+//       <CardWrapper title="Professional Classification">
+//         {/* Responsive dual-column flow grid targeting text wrap safety limits */}
+//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full content-start overflow-y-auto max-h-[220px] pr-1">
+//           {[
+//             { label: 'Advocate', sub: 'Enrolled', active: !isCardBlocked, icon: User, color: 'text-amber-600 bg-amber-50/60 border-amber-200' },
+//             { label: 'Senior Advocate', sub: 'Not Enrolled', active: false, icon: Award, color: 'text-slate-400 bg-slate-50 border-slate-200' },
+//             { label: 'Advocate-on-Record', sub: 'Eligible', active: !isCardBlocked, icon: Scale, color: 'text-blue-600 bg-blue-50/60 border-blue-200' },
+//             { label: 'Law Officer', sub: 'Registered', active: !isCardBlocked, icon: Landmark, color: 'text-emerald-600 bg-emerald-50/60 border-emerald-200' },
+//             { label: 'Government Counsel', sub: 'Registered', active: !isCardBlocked, icon: FileText, color: 'text-sky-600 bg-sky-50/60 border-sky-200' },
+//             { label: 'Public Prosecutor', sub: 'Not Regist.', active: false, icon: Shield, color: 'text-slate-400 bg-slate-50 border-slate-200' },
+//             { label: 'Legal Consultant', sub: 'Registered', active: !isCardBlocked, icon: User, color: 'text-indigo-600 bg-indigo-50/70 border-indigo-200' },
+//             { label: 'Corporate Counsel', sub: 'Registered', active: !isCardBlocked, icon: ShieldAlert, color: 'text-teal-600 bg-teal-50/70 border-teal-200' },
+//           ].map((item, idx) => {
+//             const IconComponent = item.icon;
+//             return (
+//               <div 
+//                 key={idx} 
+//                 className={`px-2 py-1.5 rounded-lg border flex items-center gap-2 justify-start transition-all min-w-0 ${item.color}`}
+//               >
+//                 <IconComponent size={13} className="shrink-0 opacity-95" />
+//                 <div className="min-w-0 flex-1">
+//                   <p className="text-[9px] font-bold leading-tight text-slate-800 truncate w-full">{item.label}</p>
+//                   <p className="text-[8px] font-medium opacity-75 mt-0.5 truncate w-full">
+//                     {isCardBlocked && item.active ? 'Suspended' : item.sub}
+//                   </p>
+//                 </div>
+//               </div>
+//             );
+//           })}
+//         </div>
+//       </CardWrapper>
+
+//       {/* 3. BAR COUNCIL VERIFICATION MODULE */}
+//       <CardWrapper title="Bar Council Verification" badge={isCardBlocked ? "Suspended" : "Verified"}>
+//         <div className="space-y-2 text-xs h-full flex flex-col justify-between min-h-[200px] sm:min-h-[220px] w-full">
+//           {[
+//             { label: 'Bar Council Verification', status: isCardBlocked ? 'Suspended' : 'Verified', color: isCardBlocked ? 'text-red-600 font-bold' : 'text-emerald-600 font-bold' },
+//             { label: 'Enrollment Date', status: '15 Aug 2012', color: 'text-slate-700 font-medium' },
+//             { label: 'License Validity', status: '31 Dec 2025', color: isCardBlocked ? 'text-slate-400 line-through' : 'text-slate-700 font-bold' },
+//             { label: 'Renewal Status', status: isCardBlocked ? 'Hold' : 'Up To Date', color: isCardBlocked ? 'text-red-500' : 'text-emerald-600 font-semibold' },
+//             { label: 'Continuing Legal Education', status: isCardBlocked ? 'Suspended' : 'Completed', color: isCardBlocked ? 'text-slate-400' : 'text-blue-600 font-medium' },
+//             { label: 'Disciplinary Record', status: isCardBlocked ? 'Review Pending' : 'No Record Found', color: isCardBlocked ? 'text-amber-600' : 'text-emerald-600 font-medium' },
+//           ].map((row, idx) => (
+//             <div key={idx} className="flex items-center justify-between py-1.5 border-b border-slate-100 last:border-0 text-[10px] sm:text-[11px] w-full gap-2">
+//               <div className="flex items-center gap-1.5 text-slate-500 min-w-0 flex-1">
+//                 <CheckCircle size={12} className={`shrink-0 ${isCardBlocked ? 'text-slate-300' : 'text-emerald-500 fill-emerald-50'}`} />
+//                 <span className="truncate font-medium text-slate-600">{row.label}</span>
+//               </div>
+//               <span className={`text-[9px] sm:text-[10px] shrink-0 font-mono text-right ${row.color}`}>{row.status}</span>
+//             </div>
+//           ))}
+//         </div>
+//       </CardWrapper>
+
+//       {/* 4. DIGITAL NFC IDENTITY SMART CARD VIEW */}
+//       <CardWrapper title="NFC Identity Card">
+//         <div className="flex flex-col h-full justify-between min-h-[220px] w-full">
+          
+//           {/* Main Card graphic layered canvas */}
+//           <div className={`w-full aspect-[1.586/1] rounded-xl p-3.5 text-white relative overflow-hidden shadow-xs flex flex-col justify-between transition-all duration-500 select-none ${
+//             isCardBlocked 
+//               ? 'from-[#2b080a] via-[#4a1014] to-[#1a0305] border border-red-900 shadow-sm' 
+//               : 'bg-linear-to-br from-[#061434] via-[#091f4d] to-[#040d24] border border-slate-900 shadow-sm'
+//           }`}>
+//             <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-linear-to-l from-white/[0.04] to-transparent skew-x-12 pointer-events-none transform origin-top-right" />
+            
+//             {/* Header properties */}
+//             <div className="flex justify-between items-start w-full relative z-10">
+//               <div className="flex items-center gap-1.5">
+//                 <Landmark size={13} className={isCardBlocked ? 'text-red-400' : 'text-slate-100'} />
+//                 <div className="leading-tight">
+//                   <h5 className="text-[8px] sm:text-[9px] font-black tracking-widest text-white uppercase">Advocate</h5>
+//                   <p className="text-[5px] sm:text-[6px] text-white/50 tracking-wider font-bold uppercase">Identity Card</p>
+//                 </div>
+//               </div>
+//               <div className={isCardBlocked ? 'text-red-500/40' : 'text-white/80'}>
+//                 <Wifi size={14} className="rotate-90 transform" />
+//               </div>
+//             </div>
+
+//             {/* Absolute element spatial placement slot row */}
+//             <div className="relative h-11 w-full flex items-center justify-between z-10 px-0.5">
+//               <div className="shrink-0">
+//                 <div className="w-7 h-5.5 rounded-sm bg-linear-to-br from-[#ffe082] via-[#ffd54f] to-[#c69a1c] relative p-0.5 border border-[#d4af37]/30 overflow-hidden">
+//                   <div className="w-full h-[1px] bg-black/10 absolute top-1/2 left-0" />
+//                   <div className="w-[1px] h-full bg-black/10 absolute left-1/3 top-0" />
+//                 </div>
+//               </div>
+
+//               {/* Centered User ring node offset */}
+//               <div className="absolute right-12 sm:right-14 bottom-0">
+//                 <div className={`w-10 h-10 rounded-full border bg-slate-100 flex items-center justify-center overflow-hidden shadow-xs relative ${
+//                   isCardBlocked ? 'border-red-500/40' : 'border-white/80'
+//                 }`}>
+//                   <User size={22} className="text-slate-400 mt-2" />
+//                   {isCardBlocked && (
+//                     <div className="absolute inset-0 bg-red-950/60 flex items-center justify-center">
+//                       <ShieldX size={10} className="text-red-400" />
+//                     </div>
+//                   )}
+//                 </div>
+//               </div>
+
+//               <div className="shrink-0">
+//                 <div className="w-8 h-8 bg-white p-0.5 rounded flex items-center justify-center">
+//                   <QrCode size={26} className={isCardBlocked ? 'text-red-950' : 'text-[#061434]'} />
+//                 </div>
+//               </div>
+//             </div>
+
+//             {/* Inner bottom data tags */}
+//             <div className="w-full relative z-10 flex justify-between items-end border-t border-white/10 pt-1">
+//               <div className="text-left min-w-0 flex-1 pr-2">
+//                 <h6 className="text-[9px] sm:text-[10px] font-bold tracking-wide text-white leading-none uppercase truncate">
+//                   Adv. Rohit Sharma
+//                 </h6>
+//                 <p className="text-[7px] text-white/60 font-mono tracking-tight mt-0.5 truncate">
+//                   MH/4789/2012
+//                 </p>
+//               </div>
+//               <span className={`text-[5px] sm:text-[6px] font-black px-1.5 py-0.5 rounded-xs uppercase tracking-wider shrink-0 border ${
+//                 isCardBlocked ? 'bg-red-500/10 border-red-500/30 text-red-300' : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300'
+//               }`}>
+//                 {isCardBlocked ? 'Blocked' : 'Active'}
+//               </span>
+//             </div>
+//           </div>
+
+//           {/* Core Table Grid Elements Metadata specs panels */}
+//           <div className="space-y-1 mt-3 text-[10px] sm:text-[11px] border-t border-slate-100 pt-2 font-medium w-full">
+//             <div className="grid grid-cols-2 gap-x-3 gap-y-1">
+//               <div>
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Card ID</span>
+//                 <span className="font-mono text-slate-700 block truncate font-bold">AIC-IND-2025-123456</span>
+//               </div>
+//               <div>
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Card Type</span>
+//                 <span className="text-slate-700 block truncate font-bold">NFC + QR Hybrid</span>
+//               </div>
+              
+//               <div className="pt-0.5">
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Card Status</span>
+//                 <span className={`font-black block truncate ${isCardBlocked ? 'text-red-600' : 'text-emerald-600'}`}>
+//                   {isCardBlocked ? 'Suspended' : 'Active'}
+//                 </span>
+//               </div>
+//               <div className="pt-0.5">
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Issue Date</span>
+//                 <span className="text-slate-700 block truncate font-bold">01 Jan 2025</span>
+//               </div>
+
+//               <div className="pt-0.5">
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Expiry Date</span>
+//                 <span className={`font-bold block truncate ${isCardBlocked ? 'text-red-500/70 line-through' : 'text-slate-700'}`}>
+//                   31 Dec 2025
+//                 </span>
+//               </div>
+//               <div className="pt-0.5">
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Security Level</span>
+//                 <span className="text-slate-700 block truncate font-black">{isCardBlocked ? 'REVOKED' : 'High'}</span>
+//               </div>
+//             </div>
+//           </div>
+
+//         </div>
+//       </CardWrapper>
+
+//     </div>
+//   );
+// }
+
+
+
+
+// import React from 'react';
+// import CardWrapper from '../ui/CardWrapper';
+// import { 
+//   CheckCircle, Award, Scale, Landmark, FileText, 
+//   Shield, User, ShieldAlert, Wifi, ShieldX, QrCode 
+// } from 'lucide-react';
+
+// export default function TopRowSection({ isCardBlocked }) {
+//   return (
+//     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch w-full">
+      
+//       {/* 1. ADVOCATE PROFILE BLOCK - HIGHLY POLISHED & MOBILE OPTIMIZED AS PER IMAGE_E2ACE2.PNG */}
+//       <CardWrapper title="Advocate Profile">
+//         <div className="flex flex-col justify-between h-full min-h-[240px] w-full overflow-hidden">
+          
+//           {/* Upper Section: Avatar + Essential Core Registration Fields */}
+//           <div className="flex gap-4 items-start w-full">
+//             {/* Precise Image Framework bounding box */}
+//             <div className="relative shrink-0 select-none">
+//               <div className="w-[84px] h-[104px] bg-slate-100 rounded-xl border border-slate-200/80 flex items-center justify-center overflow-hidden shadow-2xs">
+//                 <User size={44} className="text-slate-400 mt-5" />
+//               </div>
+//               <span className={`absolute -bottom-2 left-1/2 -translate-x-1/2 text-[9px] px-2.5 py-0.5 rounded font-extrabold uppercase tracking-wider shadow-3xs border ${
+//                 isCardBlocked 
+//                   ? 'bg-red-100 border-red-200 text-red-700' 
+//                   : 'bg-emerald-50 border-emerald-200 text-emerald-700'
+//               }`}>
+//                 {isCardBlocked ? 'Suspended' : 'Active'}
+//               </span>
+//             </div>
+            
+//             {/* Real-world client-tier details column stack */}
+//             <div className="space-y-1.5 min-w-0 flex-1 text-left">
+//               <div className="flex items-center gap-1 max-w-full">
+//                 <h4 className="text-base font-bold text-slate-900 tracking-tight truncate">Adv. Rohit Sharma</h4>
+//                 {!isCardBlocked && (
+//                   <CheckCircle size={14} className="text-blue-500 fill-blue-500 text-white shrink-0" />
+//                 )}
+//               </div>
+              
+//               <div className="text-[11px] text-slate-500 leading-tight">
+//                 <p className="font-medium opacity-75">Enrollment No.</p>
+//                 <p className="font-bold text-slate-800 font-mono mt-0.5">MH/4789/2012</p>
+//               </div>
+              
+//               <div className="text-[11px] text-slate-500 leading-tight pt-0.5">
+//                 <p className="font-medium opacity-75">Bar Council Reg. No.</p>
+//                 <p className="font-bold text-slate-800 font-mono mt-0.5">M/12345/2012</p>
+//               </div>
+
+//               <div className="text-[10px] text-slate-400 font-bold leading-tight pt-1">
+//                 <p className="opacity-75">State Bar:</p>
+//                 <span className="text-slate-700 font-semibold block truncate mt-0.5">Maharashtra Bar Council</span>
+//               </div>
+//             </div>
+//           </div>
+
+//           {/* Quick Metrics Multi-Row Sheet: Fixed stacking collapse on mobile panels via strict grid layers */}
+//           <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-3 gap-x-2 border-t border-slate-100 pt-3.5 mt-4 text-center text-[10px] w-full">
+//             <div className="min-w-0 border-r border-slate-100 pb-0.5 sm:pb-0 text-left sm:text-center pl-1 sm:pl-0">
+//               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Practice Since</p>
+//               <p className="font-extrabold text-slate-800 mt-0.5 text-xs">2012</p>
+//             </div>
+//             <div className="min-w-0 sm:border-r border-slate-100 pb-0.5 sm:pb-0 text-left sm:text-center pl-1 sm:pl-0">
+//               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Experience</p>
+//               <p className="font-extrabold text-slate-800 mt-0.5 text-xs">12+ Years</p>
+//             </div>
+//             <div className="min-w-0 border-r border-slate-100 text-left sm:text-center pl-1 sm:pl-0">
+//               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Date of Enroll</p>
+//               <p className="font-bold text-slate-800 mt-0.5 whitespace-nowrap truncate text-[11px]">15 Aug 2012</p>
+//             </div>
+//             <div className="min-w-0 text-left sm:text-center pl-1 sm:pl-0">
+//               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Renewal Valid</p>
+//               <p className={`font-black mt-0.5 text-[11px] truncate ${isCardBlocked ? 'text-red-600 line-through' : 'text-amber-600'}`}>
+//                 31 Dec 2025
+//               </p>
+//             </div>
+//           </div>
+
+//         </div>
+//       </CardWrapper>
+
+//       {/* 2. PROFESSIONAL CLASSIFICATION MODULE */}
+//       <CardWrapper title="Professional Classification">
+//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full content-start overflow-y-auto max-h-[220px] pr-1">
+//           {[
+//             { label: 'Advocate', sub: 'Enrolled', active: !isCardBlocked, icon: User, color: 'text-amber-600 bg-amber-50/60 border-amber-200' },
+//             { label: 'Senior Advocate', sub: 'Not Enrolled', active: false, icon: Award, color: 'text-slate-400 bg-slate-50 border-slate-200' },
+//             { label: 'Advocate-on-Record', sub: 'Eligible', active: !isCardBlocked, icon: Scale, color: 'text-blue-600 bg-blue-50/60 border-blue-200' },
+//             { label: 'Law Officer', sub: 'Registered', active: !isCardBlocked, icon: Landmark, color: 'text-emerald-600 bg-emerald-50/60 border-emerald-200' },
+//             { label: 'Government Counsel', sub: 'Registered', active: !isCardBlocked, icon: FileText, color: 'text-sky-600 bg-sky-50/60 border-sky-200' },
+//             { label: 'Public Prosecutor', sub: 'Not Regist.', active: false, icon: Shield, color: 'text-slate-400 bg-slate-50 border-slate-200' },
+//             { label: 'Legal Consultant', sub: 'Registered', active: !isCardBlocked, icon: User, color: 'text-indigo-600 bg-indigo-50/70 border-indigo-200' },
+//             { label: 'Corporate Counsel', sub: 'Registered', active: !isCardBlocked, icon: ShieldAlert, color: 'text-teal-600 bg-teal-50/70 border-teal-200' },
+//           ].map((item, idx) => {
+//             const IconComponent = item.icon;
+//             return (
+//               <div 
+//                 key={idx} 
+//                 className={`px-2.5 py-2 rounded-lg border flex items-center gap-2.5 justify-start transition-all min-w-0 ${item.color}`}
+//               >
+//                 <IconComponent size={14} className="shrink-0 opacity-95" />
+//                 <div className="min-w-0 flex-1 text-left">
+//                   <p className="text-[10px] font-bold leading-tight text-slate-800 truncate w-full">{item.label}</p>
+//                   <p className="text-[9px] font-medium opacity-75 mt-0.5 truncate w-full">
+//                     {isCardBlocked && item.active ? 'Suspended' : item.sub}
+//                   </p>
+//                 </div>
+//               </div>
+//             );
+//           })}
+//         </div>
+//       </CardWrapper>
+
+//       {/* 3. BAR COUNCIL VERIFICATION MODULE */}
+//       <CardWrapper title="Bar Council Verification" badge={isCardBlocked ? "Suspended" : "Verified"}>
+//         <div className="space-y-2 text-xs h-full flex flex-col justify-between min-h-[220px] w-full">
+//           {[
+//             { label: 'Bar Council Verification', status: isCardBlocked ? 'Suspended' : 'Verified', color: isCardBlocked ? 'text-red-600 font-bold' : 'text-emerald-600 font-bold' },
+//             { label: 'Enrollment Date', status: '15 Aug 2012', color: 'text-slate-700 font-medium' },
+//             { label: 'License Validity', status: '31 Dec 2025', color: isCardBlocked ? 'text-slate-400 line-through' : 'text-slate-700 font-bold' },
+//             { label: 'Renewal Status', status: isCardBlocked ? 'Hold' : 'Up To Date', color: isCardBlocked ? 'text-red-500' : 'text-emerald-600 font-semibold' },
+//             { label: 'Continuing Legal Education', status: isCardBlocked ? 'Suspended' : 'Completed', color: isCardBlocked ? 'text-slate-400' : 'text-blue-600 font-medium' },
+//             { label: 'Disciplinary Record', status: isCardBlocked ? 'Review Pending' : 'No Record Found', color: isCardBlocked ? 'text-amber-600' : 'text-emerald-600 font-medium' },
+//           ].map((row, idx) => (
+//             <div key={idx} className="flex items-center justify-between py-1.5 border-b border-slate-100 last:border-0 text-[10px] sm:text-[11px] w-full gap-2">
+//               <div className="flex items-center gap-1.5 text-slate-500 min-w-0 flex-1">
+//                 <CheckCircle size={12} className={`shrink-0 ${isCardBlocked ? 'text-slate-300' : 'text-emerald-500 fill-emerald-50'}`} />
+//                 <span className="truncate font-medium text-slate-600 text-left">{row.label}</span>
+//               </div>
+//               <span className={`text-[9px] sm:text-[10px] shrink-0 font-mono text-right ${row.color}`}>{row.status}</span>
+//             </div>
+//           ))}
+//         </div>
+//       </CardWrapper>
+
+//       {/* 4. DIGITAL NFC IDENTITY SMART CARD VIEW */}
+//       <CardWrapper title="NFC Identity Card">
+//         <div className="flex flex-col h-full justify-between min-h-[220px] w-full">
+          
+//           <div className={`w-full aspect-[1.586/1] rounded-xl p-3.5 text-white relative overflow-hidden shadow-xs flex flex-col justify-between transition-all duration-500 select-none ${
+//             isCardBlocked 
+//               ? 'from-[#2b080a] via-[#4a1014] to-[#1a0305] border border-red-900 shadow-sm' 
+//               : 'bg-linear-to-br from-[#061434] via-[#091f4d] to-[#040d24] border border-slate-900 shadow-sm'
+//           }`}>
+//             <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-linear-to-l from-white/[0.04] to-transparent skew-x-12 pointer-events-none transform origin-top-right" />
+            
+//             <div className="flex justify-between items-start w-full relative z-10">
+//               <div className="flex items-center gap-1.5">
+//                 <Landmark size={13} className={isCardBlocked ? 'text-red-400' : 'text-slate-100'} />
+//                 <div className="leading-tight text-left">
+//                   <h5 className="text-[8px] sm:text-[9px] font-black tracking-widest text-white uppercase">Advocate</h5>
+//                   <p className="text-[5px] sm:text-[6px] text-white/50 tracking-wider font-bold uppercase">Identity Card</p>
+//                 </div>
+//               </div>
+//               <div className={isCardBlocked ? 'text-red-500/40' : 'text-white/80'}>
+//                 <Wifi size={14} className="rotate-90 transform" />
+//               </div>
+//             </div>
+
+//             <div className="relative h-11 w-full flex items-center justify-between z-10 px-0.5">
+//               <div className="shrink-0">
+//                 <div className="w-7 h-5.5 rounded-sm bg-linear-to-br from-[#ffe082] via-[#ffd54f] to-[#c69a1c] relative p-0.5 border border-[#d4af37]/30 overflow-hidden">
+//                   <div className="w-full h-[1px] bg-black/10 absolute top-1/2 left-0" />
+//                   <div className="w-[1px] h-full bg-black/10 absolute left-1/3 top-0" />
+//                 </div>
+//               </div>
+
+//               <div className="absolute right-12 sm:right-14 bottom-0">
+//                 <div className={`w-10 h-10 rounded-full border bg-slate-100 flex items-center justify-center overflow-hidden shadow-xs relative ${
+//                   isCardBlocked ? 'border-red-500/40' : 'border-white/80'
+//                 }`}>
+//                   <User size={22} className="text-slate-400 mt-2" />
+//                   {isCardBlocked && (
+//                     <div className="absolute inset-0 bg-red-950/60 flex items-center justify-center">
+//                       <ShieldX size={10} className="text-red-400" />
+//                     </div>
+//                   )}
+//                 </div>
+//               </div>
+
+//               <div className="shrink-0">
+//                 <div className="w-8 h-8 bg-white p-0.5 rounded flex items-center justify-center">
+//                   <QrCode size={26} className={isCardBlocked ? 'text-red-950' : 'text-[#061434]'} />
+//                 </div>
+//               </div>
+//             </div>
+
+//             <div className="w-full relative z-10 flex justify-between items-end border-t border-white/10 pt-1">
+//               <div className="text-left min-w-0 flex-1 pr-2">
+//                 <h6 className="text-[9px] sm:text-[10px] font-bold tracking-wide text-white leading-none uppercase truncate">
+//                   Adv. Rohit Sharma
+//                 </h6>
+//                 <p className="text-[7px] text-white/60 font-mono tracking-tight mt-0.5 truncate">
+//                   MH/4789/2012
+//                 </p>
+//               </div>
+//               <span className={`text-[5px] sm:text-[6px] font-black px-1.5 py-0.5 rounded-xs uppercase tracking-wider shrink-0 border ${
+//                 isCardBlocked ? 'bg-red-500/10 border-red-500/30 text-red-300' : 'bg-emerald-500/20 text-emerald-500/20 text-emerald-300'
+//               }`}>
+//                 {isCardBlocked ? 'Blocked' : 'Active'}
+//               </span>
+//             </div>
+//           </div>
+
+//           {/* Core Table Grid Elements */}
+//           <div className="space-y-1 mt-3 text-[10px] sm:text-[11px] border-t border-slate-100 pt-2 font-medium w-full text-left">
+//             <div className="grid grid-cols-2 gap-x-3 gap-y-1">
+//               <div>
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Card ID</span>
+//                 <span className="font-mono text-slate-700 block truncate font-bold">AIC-IND-2025-123456</span>
+//               </div>
+//               <div>
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Card Type</span>
+//                 <span className="text-slate-700 block truncate font-bold">NFC + QR Hybrid</span>
+//               </div>
+              
+//               <div className="pt-0.5">
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Card Status</span>
+//                 <span className={`font-black block truncate ${isCardBlocked ? 'text-red-600' : 'text-emerald-600'}`}>
+//                   {isCardBlocked ? 'Suspended' : 'Active'}
+//                 </span>
+//               </div>
+//               <div className="pt-0.5">
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Issue Date</span>
+//                 <span className="text-slate-700 block truncate font-bold">01 Jan 2025</span>
+//               </div>
+
+//               <div className="pt-0.5">
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Expiry Date</span>
+//                 <span className={`font-bold block truncate ${isCardBlocked ? 'text-red-500/70 line-through' : 'text-slate-700'}`}>
+//                   31 Dec 2025
+//                 </span>
+//               </div>
+//               <div className="pt-0.5">
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Security Level</span>
+//                 <span className="text-slate-700 block truncate font-black">{isCardBlocked ? 'REVOKED' : 'High'}</span>
+//               </div>
+//             </div>
+//           </div>
+
+//         </div>
+//       </CardWrapper>
+
+//     </div>
+//   );
+// }
+
+
+// import React from 'react';
+// import CardWrapper from '../ui/CardWrapper';
+// import { 
+//   CheckCircle, Award, Scale, Landmark, FileText, 
+//   Shield, User, ShieldAlert, Wifi, ShieldX, QrCode 
+// } from 'lucide-react';
+
+// export default function TopRowSection({ isCardBlocked }) {
+  
+//   // 1. Centralized State/Data Roster Object
+//   const advocateData = {
+//     firstName: "Rohit",
+//     lastName: "Sharma",
+//     title: "Adv. Rohit Sharma",
+//     enrollmentNo: "MH/4789/2012",
+//     barCouncilRegNo: "M/12345/2012",
+//     stateBarCouncil: "Maharashtra Bar Council",
+//     isVerified: true,
+//     metrics: {
+//       practiceSince: "2012",
+//       experience: "12+ Years",
+//       enrollDate: "15 Aug 2012",
+//       renewalValid: "31 Dec 2025"
+//     }
+//   };
+
+//   // 2. Dynamic Array for Professional Classifications
+//   const classifications = [
+//     { label: 'Advocate', sub: 'Enrolled', active: true, icon: User, color: 'text-amber-600 bg-amber-50/60 border-amber-200' },
+//     { label: 'Senior Advocate', sub: 'Not Enrolled', active: false, icon: Award, color: 'text-slate-400 bg-slate-50 border-slate-200' },
+//     { label: 'Advocate-on-Record', sub: 'Eligible', active: true, icon: Scale, color: 'text-blue-600 bg-blue-50/60 border-blue-200' },
+//     { label: 'Law Officer', sub: 'Registered', active: true, icon: Landmark, color: 'text-emerald-600 bg-emerald-50/60 border-emerald-200' },
+//     { label: 'Government Counsel', sub: 'Registered', active: true, icon: FileText, color: 'text-sky-600 bg-sky-50/60 border-sky-200' },
+//     { label: 'Public Prosecutor', sub: 'Not Regist.', active: false, icon: Shield, color: 'text-slate-400 bg-slate-50 border-slate-200' },
+//     { label: 'Legal Consultant', sub: 'Registered', active: true, icon: User, color: 'text-indigo-600 bg-indigo-50/70 border-indigo-200' },
+//     { label: 'Corporate Counsel', sub: 'Registered', active: true, icon: ShieldAlert, color: 'text-teal-600 bg-teal-50/70 border-teal-200' },
+//   ];
+
+//   // 3. Dynamic Checklists Array for Verification Card
+//   const verificationChecks = [
+//     { label: 'Bar Council Verification', status: isCardBlocked ? 'Suspended' : 'Verified', variant: 'success' },
+//     { label: 'Enrollment Date', status: advocateData.metrics.enrollDate, variant: 'neutral' },
+//     { label: 'License Validity', status: advocateData.metrics.renewalValid, variant: 'neutral_bold' },
+//     { label: 'Renewal Status', status: isCardBlocked ? 'Hold' : 'Up To Date', variant: 'success' },
+//     { label: 'Continuing Legal Education', status: isCardBlocked ? 'Suspended' : 'Completed', variant: 'info' },
+//     { label: 'Disciplinary Record', status: isCardBlocked ? 'Review Pending' : 'No Record Found', variant: 'success' },
+//   ];
+
+//   // 4. NFC Physical Pass Passport Specs Object
+//   const nfcCardSpecs = {
+//     cardId: "AIC-IND-2025-123456",
+//     cardType: "NFC + QR Hybrid",
+//     issueDate: "01 Jan 2025",
+//     securityLevel: "High"
+//   };
+
+//   return (
+//     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 items-stretch w-full">
+      
+//       {/* CARD 1: ADVOCATE PROFILE SECTION */}
+//       <CardWrapper title="Advocate Profile">
+//         <div className="flex flex-col justify-between h-full min-h-[220px] w-full">
+//           <div className="flex gap-4 items-start w-full">
+//             <div className="relative shrink-0">
+//               <div className="w-20 h-24 bg-slate-100 rounded-lg border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
+//                 <User size={40} className="text-slate-400 mt-4" />
+//               </div>
+//               <span className={`absolute -bottom-2 left-1/2 -translate-x-1/2 text-[9px] px-2.5 py-0.5 rounded font-bold uppercase tracking-wider shadow-xs border ${
+//                 isCardBlocked ? 'bg-red-100 border-red-200 text-red-700' : 'bg-emerald-100 border-emerald-200 text-emerald-700'
+//               }`}>
+//                 {isCardBlocked ? 'Suspended' : 'Active'}
+//               </span>
+//             </div>
+            
+//             <div className="space-y-1.5 min-w-0 flex-1 text-left">
+//               <div className="flex items-center gap-1">
+//                 <h4 className="text-base font-bold text-slate-900 tracking-tight truncate">{advocateData.title}</h4>
+//                 {advocateData.isVerified && !isCardBlocked && (
+//                   <CheckCircle size={14} className="text-blue-500 fill-blue-500 text-white shrink-0" />
+//                 )}
+//               </div>
+              
+//               <div className="text-[11px] text-slate-500">
+//                 <p className="font-medium">Enrollment No.</p>
+//                 <p className="font-semibold text-slate-800">{advocateData.enrollmentNo}</p>
+//               </div>
+              
+//               <div className="text-[11px] text-slate-500">
+//                 <p className="font-medium">Bar Council Reg. No.</p>
+//                 <p className="font-semibold text-slate-800">{advocateData.barCouncilRegNo}</p>
+//               </div>
+
+//               <p className="text-[10px] text-slate-400 font-bold leading-tight pt-0.5">
+//                 State Bar: <span className="text-slate-600 font-medium block truncate">{advocateData.stateBarCouncil}</span>
+//               </p>
+//             </div>
+//           </div>
+
+//           {/* Core Row Grid for Card Metrics */}
+//           <div className="grid grid-cols-4 gap-1 border-t border-slate-100 pt-3 mt-4 text-center text-[10px] w-full">
+//             <div className="min-w-0 border-r border-slate-100 last:border-0">
+//               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Practice Since</p>
+//               <p className="font-bold text-slate-800 mt-0.5">{advocateData.metrics.practiceSince}</p>
+//             </div>
+//             <div className="min-w-0 border-r border-slate-100 last:border-0">
+//               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Experience</p>
+//               <p className="font-bold text-slate-800 mt-0.5">{advocateData.metrics.experience}</p>
+//             </div>
+//             <div className="min-w-0 border-r border-slate-100 last:border-0">
+//               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Date of Enroll</p>
+//               <p className="font-bold text-slate-800 mt-0.5 truncate">{advocateData.metrics.enrollDate}</p>
+//             </div>
+//             <div className="min-w-0">
+//               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Renewal Valid</p>
+//               <p className={`font-bold mt-0.5 truncate ${isCardBlocked ? 'text-red-600 line-through' : 'text-amber-600'}`}>
+//                 {advocateData.metrics.renewalValid}
+//               </p>
+//             </div>
+//           </div>
+//         </div>
+//       </CardWrapper>
+
+//       {/* CARD 2: PROFESSIONAL CLASSIFICATION MATRIX ROWS */}
+//       <CardWrapper title="Professional Classification">
+//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full content-start overflow-y-auto max-h-[220px] pr-1">
+//           {classifications.map((item, idx) => {
+//             const IconComponent = item.icon;
+//             return (
+//               <div 
+//                 key={idx} 
+//                 className={`px-2.5 py-2 rounded-lg border flex items-center gap-2.5 justify-start transition-all min-w-0 ${item.color}`}
+//               >
+//                 <IconComponent size={14} className="shrink-0 opacity-95" />
+//                 <div className="min-w-0 flex-1 text-left">
+//                   <p className="text-[10px] font-bold leading-tight text-slate-800 truncate w-full">{item.label}</p>
+//                   <p className="text-[9px] font-medium opacity-75 mt-0.5 truncate w-full">
+//                     {isCardBlocked && item.active ? 'Suspended' : item.sub}
+//                   </p>
+//                 </div>
+//               </div>
+//             );
+//           })}
+//         </div>
+//       </CardWrapper>
+
+//       {/* CARD 3: BAR COUNCIL CHECKLIST VERIFICATION LEDGER */}
+//       <CardWrapper title="Bar Council Verification" badge={isCardBlocked ? "Suspended" : "Verified"}>
+//         <div className="space-y-2 text-xs h-full flex flex-col justify-between min-h-[220px] w-full">
+//           {verificationChecks.map((row, idx) => {
+//             // Compute dynamic color logic based on conditions
+//             let statusColor = "text-slate-700 font-medium";
+//             if (isCardBlocked && row.label !== 'Enrollment Date') {
+//               statusColor = "text-slate-400 line-through";
+//             } else if (row.variant === 'success') {
+//               statusColor = isCardBlocked ? 'text-red-500' : 'text-emerald-600 font-semibold';
+//             } else if (row.variant === 'info') {
+//               statusColor = isCardBlocked ? 'text-slate-400' : 'text-blue-600 font-semibold';
+//             } else if (row.variant === 'neutral_bold') {
+//               statusColor = 'text-slate-700 font-bold';
+//             }
+
+//             return (
+//               <div key={idx} className="flex items-center justify-between py-1.5 border-b border-slate-100 last:border-0 text-[11px] w-full gap-2">
+//                 <div className="flex items-center gap-2 text-slate-500 min-w-0 flex-1">
+//                   <CheckCircle size={13} className={`shrink-0 ${isCardBlocked ? 'text-slate-300' : 'text-emerald-500 fill-emerald-50'}`} />
+//                   <span className="truncate font-medium text-slate-600 text-left">{row.label}</span>
+//                 </div>
+//                 <span className={`text-[10px] shrink-0 font-mono text-right ${statusColor}`}>{row.status}</span>
+//               </div>
+//             );
+//           })}
+//         </div>
+//       </CardWrapper>
+
+//       {/* CARD 4: GRAPHICAL SMART NFC PASSPORT BLOCK */}
+//       <CardWrapper title="NFC Identity Card">
+//         <div className="flex flex-col h-full justify-between min-h-[220px] w-full">
+          
+//           {/* Main Virtual Pass Mesh Layer */}
+//           <div className={`w-full aspect-[1.586/1] rounded-xl p-4 text-white relative overflow-hidden shadow-xs flex flex-col justify-between transition-all duration-500 select-none ${
+//             isCardBlocked 
+//               ? 'from-[#2b080a] via-[#4a1014] to-[#1a0305] border border-red-900 shadow-sm' 
+//               : 'bg-linear-to-br from-[#061434] via-[#091f4d] to-[#040d24] border border-slate-900 shadow-sm'
+//           }`}>
+//             <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-linear-to-l from-white/[0.04] to-transparent skew-x-12 pointer-events-none transform origin-top-right" />
+            
+//             {/* Header Identity Elements */}
+//             <div className="flex justify-between items-start w-full relative z-10">
+//               <div className="flex items-center gap-2">
+//                 <Landmark size={14} className={isCardBlocked ? 'text-red-400' : 'text-slate-100'} />
+//                 <div className="leading-tight text-left">
+//                   <h5 className="text-[9px] font-black tracking-widest text-white uppercase">Advocate</h5>
+//                   <p className="text-[6px] text-white/50 tracking-wider font-bold uppercase">Identity Card</p>
+//                 </div>
+//               </div>
+//               <div className={isCardBlocked ? 'text-red-500/40' : 'text-white/80'}>
+//                 <Wifi size={16} className="rotate-90 transform" />
+//               </div>
+//             </div>
+
+//             {/* Middle Spatial Core Row for Microchip and Rings */}
+//             <div className="relative h-12 w-full flex items-center justify-between z-10 px-0.5">
+//               <div className="shrink-0">
+//                 <div className="w-7.5 h-6 rounded bg-linear-to-br from-[#ffe082] via-[#ffd54f] to-[#c69a1c] relative p-0.5 border border-[#d4af37]/40 shadow-xs overflow-hidden">
+//                   <div className="w-full h-[1px] bg-black/10 absolute top-1/2 left-0" />
+//                   <div className="w-[1px] h-full bg-black/10 absolute left-1/3 top-0" />
+//                 </div>
+//               </div>
+
+//               {/* Central Dynamic Mask Slot */}
+//               <div className="absolute right-14 bottom-0">
+//                 <div className={`w-11 h-11 rounded-full border-1.5 bg-slate-100 flex items-center justify-center overflow-hidden shadow-xs relative ${
+//                   isCardBlocked ? 'border-red-500/50' : 'border-white/90'
+//                 }`}>
+//                   <User size={24} className="text-slate-400 mt-2" />
+//                   {isCardBlocked && (
+//                     <div className="absolute inset-0 bg-red-950/60 flex items-center justify-center">
+//                       <ShieldX size={12} className="text-red-400" />
+//                     </div>
+//                   )}
+//                 </div>
+//               </div>
+
+//               <div className="shrink-0">
+//                 <div className="w-8.5 h-8.5 bg-white p-0.5 rounded flex items-center justify-center shadow-xs">
+//                   <QrCode size={30} className={isCardBlocked ? 'text-red-950' : 'text-[#061434]'} />
+//                 </div>
+//               </div>
+//             </div>
+
+//             {/* Inside Footer Row Credentials */}
+//             <div className="w-full relative z-10 flex justify-between items-end border-t border-white/10 pt-1 text-left">
+//               <div className="min-w-0 flex-1 pr-2">
+//                 <h6 className="text-[10px] font-extrabold tracking-wide text-white leading-none uppercase truncate">
+//                   {advocateData.title}
+//                 </h6>
+//                 <p className="text-[7.5px] text-white/60 font-mono tracking-tight mt-0.5 truncate">
+//                   {advocateData.enrollmentNo}
+//                 </p>
+//               </div>
+//               <span className={`text-[6px] font-black px-1.5 py-0.5 rounded-xs uppercase tracking-wider shrink-0 border ${
+//                 isCardBlocked ? 'bg-red-500/10 border-red-500/30 text-red-300' : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300'
+//               }`}>
+//                 {isCardBlocked ? 'Blocked' : 'Active'}
+//               </span>
+//             </div>
+//           </div>
+
+//           {/* Sub-Card Data Metrics Table Panel Layer */}
+//           <div className="space-y-1.5 mt-3 text-[11px] border-t border-slate-100 pt-2 font-medium w-full text-left">
+//             <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+//               <div>
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Card ID</span>
+//                 <span className="font-mono text-slate-700 block truncate font-bold text-[10.5px]">{nfcCardSpecs.cardId}</span>
+//               </div>
+//               <div>
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Card Type</span>
+//                 <span className="text-slate-700 block truncate font-bold text-[10.5px]">{nfcCardSpecs.cardType}</span>
+//               </div>
+              
+//               <div>
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Card Status</span>
+//                 <span className={`font-black block truncate text-[10.5px] ${isCardBlocked ? 'text-red-600' : 'text-emerald-600'}`}>
+//                   {isCardBlocked ? 'Suspended' : 'Active'}
+//                 </span>
+//               </div>
+//               <div>
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Issue Date</span>
+//                 <span className="text-slate-700 block truncate font-bold text-[10.5px]">{nfcCardSpecs.issueDate}</span>
+//               </div>
+
+//               <div>
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Expiry Date</span>
+//                 <span className={`font-bold block truncate text-[10.5px] ${isCardBlocked ? 'text-red-500/70 line-through' : 'text-slate-700'}`}>
+//                   {advocateData.metrics.renewalValid}
+//                 </span>
+//               </div>
+//               <div>
+//                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Security Level</span>
+//                 <span className={`font-black block truncate text-[10.5px] ${isCardBlocked ? 'text-red-600' : 'text-blue-600'}`}>
+//                   {isCardBlocked ? 'REVOKED' : nfcCardSpecs.securityLevel}
+//                 </span>
+//               </div>
+//             </div>
+//           </div>
+
+//         </div>
+//       </CardWrapper>
+
+//     </div>
+//   );
+// }
+
+
+import React, { useState, useRef } from 'react';
 import CardWrapper from '../ui/CardWrapper';
 import { 
   CheckCircle, Award, Scale, Landmark, FileText, 
-  Shield, User, ShieldAlert, Wifi, ShieldX, QrCode 
+  Shield, User, ShieldAlert, Wifi, ShieldX, QrCode, Camera 
 } from 'lucide-react';
 
 export default function TopRowSection({ isCardBlocked }) {
+  // 🔥 DYNAMIC FILE IMAGE STATES LOGIC
+  const [profileImage, setProfileImage] = useState(
+    "https://i.pinimg.com/originals/d1/81/e4/d181e44cf0a7d5f9190bc96939da4164.png" // Premium Corporate Portrait Link
+  );
+  const fileInputRef = useRef(null);
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setProfileImage(imageUrl);
+    }
+  };
+
+  // Centralized State Data Roster Object
+  const advocateData = {
+    firstName: "Rahul",
+    lastName: "Singh",
+    title: "Adv. Rahul Singh",
+    enrollmentNo: "MH/4776/2014",
+    barCouncilRegNo: "M/12354/2014",
+    stateBarCouncil: "Delhi Bar Council",
+    isVerified: true,
+    metrics: {
+      practiceSince: "2014",
+      experience: "10+ Years",
+      enrollDate: "15 Aug 2014",
+      renewalValid: "31 Dec 27"
+    }
+  };
+
+  const classifications = [
+    { label: 'Advocate', sub: 'Enrolled', active: true, icon: User, color: 'text-amber-600 bg-amber-50/60 border-amber-200' },
+    { label: 'Senior Advocate', sub: 'Not Enrolled', active: false, icon: Award, color: 'text-slate-400 bg-slate-50 border-slate-200' },
+    { label: 'Advocate-on-Record', sub: 'Eligible', active: true, icon: Scale, color: 'text-blue-600 bg-blue-50/60 border-blue-200' },
+    { label: 'Law Officer', sub: 'Registered', active: true, icon: Landmark, color: 'text-emerald-600 bg-emerald-50/60 border-emerald-200' },
+    { label: 'Government Counsel', sub: 'Registered', active: true, icon: FileText, color: 'text-sky-600 bg-sky-50/60 border-sky-200' },
+    { label: 'Public Prosecutor', sub: 'Not Regist.', active: false, icon: Shield, color: 'text-slate-400 bg-slate-50 border-slate-200' },
+    { label: 'Legal Consultant', sub: 'Registered', active: true, icon: User, color: 'text-indigo-600 bg-indigo-50/70 border-indigo-200' },
+    { label: 'Corporate Counsel', sub: 'Registered', active: true, icon: ShieldAlert, color: 'text-teal-600 bg-teal-50/70 border-teal-200' },
+  ];
+
+  const verificationChecks = [
+    { label: 'Bar Council Verification', status: isCardBlocked ? 'Suspended' : 'Verified', variant: 'success' },
+    { label: 'Enrollment Date', status: advocateData.metrics.enrollDate, variant: 'neutral' },
+    { label: 'License Validity', status: advocateData.metrics.renewalValid, variant: 'neutral_bold' },
+    { label: 'Renewal Status', status: isCardBlocked ? 'Hold' : 'Up To Date', variant: 'success' },
+    { label: 'Continuing Legal Education', status: isCardBlocked ? 'Suspended' : 'Completed', variant: 'info' },
+    { label: 'Disciplinary Record', status: isCardBlocked ? 'Review Pending' : 'No Record Found', variant: 'success' },
+  ];
+
+  const nfcCardSpecs = {
+    cardId: "AIC-IND-2025-123456",
+    cardType: "NFC + QR Hybrid",
+    issueDate: "01 Jan 2025",
+    securityLevel: "High"
+  };
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 items-stretch w-full">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch w-full">
       
-      {/* 1. ADVOCATE PROFILE BLOCK */}
+      {/* Hidden File Input Node for Upload Controls */}
+      <input 
+        type="file" 
+        ref={fileInputRef} 
+        onChange={handleImageUpload} 
+        accept="image/*" 
+        className="hidden" 
+      />
+
+      {/* CARD 1: ADVOCATE PROFILE SECTION */}
       <CardWrapper title="Advocate Profile">
-        <div className="flex flex-col justify-between h-full min-h-[230px] w-full overflow-hidden">
+        <div className="flex flex-col justify-between h-full min-h-[240px] w-full overflow-hidden">
+          
           <div className="flex gap-4 items-start w-full">
-            {/* Avatar container slot */}
-            <div className="relative shrink-0">
-              <div className="w-18 h-22 sm:w-20 sm:h-24 bg-slate-100 rounded-lg border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
-                <User size={38} className="text-slate-400 mt-4" />
+            {/* Interactive Image Framework with Hover Trigger Camera Overlay */}
+            <div className="relative shrink-0 select-none group">
+              <div 
+                onClick={() => fileInputRef.current.click()}
+                className="w-[84px] h-[104px] bg-slate-100 rounded-xl border border-slate-200/80 flex items-center justify-center overflow-hidden shadow-2xs relative cursor-pointer"
+              >
+                <img 
+                  src={profileImage} 
+                  alt="Advocate Passport Size Document Asset" 
+                  className="w-full h-full object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                  <Camera size={16} />
+                </div>
               </div>
-              <span className={`absolute -bottom-2 left-1/2 -translate-x-1/2 text-[8px] sm:text-[9px] px-2.5 py-0.5 rounded font-bold uppercase tracking-wider shadow-xs border ${
-                isCardBlocked 
-                  ? 'bg-red-100 border-red-200 text-red-700' 
-                  : 'bg-emerald-100 border-emerald-200 text-emerald-700'
+              <span className={`absolute -bottom-2 left-1/2 -translate-x-1/2 text-[9px] px-2.5 py-0.5 rounded font-extrabold uppercase tracking-wider shadow-3xs border ${
+                isCardBlocked ? 'bg-red-100 border-red-200 text-red-700' : 'bg-emerald-50 border-emerald-200 text-emerald-700'
               }`}>
                 {isCardBlocked ? 'Suspended' : 'Active'}
               </span>
             </div>
             
-            {/* Context details container */}
-            <div className="space-y-1 min-w-0 flex-1">
+            {/* Registration Details */}
+            <div className="space-y-1.5 min-w-0 flex-1 text-left">
               <div className="flex items-center gap-1 max-w-full">
-                <h4 className="text-sm sm:text-base font-bold text-slate-900 tracking-tight truncate">Adv. Rohit Sharma</h4>
-                {!isCardBlocked && (
+                <h4 className="text-base font-bold text-slate-900 tracking-tight truncate">{advocateData.title}</h4>
+                {advocateData.isVerified && !isCardBlocked && (
                   <CheckCircle size={14} className="text-blue-500 fill-blue-500 text-white shrink-0" />
                 )}
               </div>
               
-              <div className="text-[10px] sm:text-[11px] text-slate-500">
-                <p className="font-medium">Enrollment No.</p>
-                <p className="font-semibold text-slate-800 truncate">MH/4789/2012</p>
+              <div className="text-[11px] text-slate-500 leading-tight">
+                <p className="font-medium opacity-75">Enrollment No.</p>
+                <p className="font-bold text-slate-800 font-mono mt-0.5">{advocateData.enrollmentNo}</p>
               </div>
               
-              <div className="text-[10px] sm:text-[11px] text-slate-500">
-                <p className="font-medium">Bar Council Reg. No.</p>
-                <p className="font-semibold text-slate-800 truncate">M/12345/2012</p>
+              <div className="text-[11px] text-slate-500 leading-tight pt-0.5">
+                <p className="font-medium opacity-75">Bar Council Reg. No.</p>
+                <p className="font-bold text-slate-800 font-mono mt-0.5">{advocateData.barCouncilRegNo}</p>
               </div>
 
-              <p className="text-[9px] sm:text-[10px] text-slate-400 font-bold leading-tight pt-0.5">
-                State Bar: <span className="text-slate-600 font-medium block truncate">Maharashtra Bar Council</span>
-              </p>
+              <div className="text-[10px] text-slate-400 font-bold leading-tight pt-1">
+                <p className="opacity-75">State Bar:</p>
+                <span className="text-slate-700 font-semibold block truncate mt-0.5">{advocateData.stateBarCouncil}</span>
+              </div>
             </div>
           </div>
 
-          {/* Quick Metrics Multi-Row Responsive Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 border-t border-slate-100 pt-3 mt-4 text-center text-[10px] w-full">
-            <div className="min-w-0 border-r border-slate-100 last:border-0 pb-1 sm:pb-0">
+          {/* Quick Metrics Multi-Row Responsive Sheet */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-3 gap-x-2 border-t border-slate-100 pt-3.5 mt-4 text-center text-[10px] w-full">
+            <div className="min-w-0 border-r border-slate-100 pb-0.5 sm:pb-0 text-left sm:text-center pl-1 sm:pl-0">
               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Practice Since</p>
-              <p className="font-bold text-slate-800 mt-0.5">2012</p>
+              <p className="font-extrabold text-slate-800 mt-0.5 text-xs">{advocateData.metrics.practiceSince}</p>
             </div>
-            <div className="min-w-0 sm:border-r border-slate-100 last:border-0 pb-1 sm:pb-0">
+            <div className="min-w-0 sm:border-r border-slate-100 pb-0.5 sm:pb-0 text-left sm:text-center pl-1 sm:pl-0">
               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Experience</p>
-              <p className="font-bold text-slate-800 mt-0.5">12+ Years</p>
+              <p className="font-extrabold text-slate-800 mt-0.5 text-xs">{advocateData.metrics.experience}</p>
             </div>
-            <div className="min-w-0 border-r border-slate-100 last:border-0">
+            <div className="min-w-0 border-r border-slate-100 text-left sm:text-center pl-1 sm:pl-0">
               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Date of Enroll</p>
-              <p className="font-bold text-slate-800 mt-0.5 whitespace-nowrap truncate">15 Aug 2012</p>
+              <p className="font-bold text-slate-800 mt-0.5 whitespace-nowrap truncate text-[11px]">{advocateData.metrics.enrollDate}</p>
             </div>
-            <div className="min-w-0">
+            <div className="min-w-0 text-left sm:text-center pl-1 sm:pl-0">
               <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">Renewal Valid</p>
-              <p className={`font-bold mt-0.5 truncate ${isCardBlocked ? 'text-red-600 line-through' : 'text-amber-600'}`}>
-                31 Dec 2025
+              <p className={`font-black mt-0.5 text-[11px] truncate ${isCardBlocked ? 'text-red-600 line-through' : 'text-amber-600'}`}>
+                {advocateData.metrics.renewalValid}
               </p>
             </div>
           </div>
         </div>
       </CardWrapper>
 
-      {/* 2. PROFESSIONAL CLASSIFICATION MODULE */}
+      {/* CARD 2: PROFESSIONAL CLASSIFICATION MATRIX ROWS */}
       <CardWrapper title="Professional Classification">
-        {/* Responsive dual-column flow grid targeting text wrap safety limits */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full content-start overflow-y-auto max-h-[220px] pr-1">
-          {[
-            { label: 'Advocate', sub: 'Enrolled', active: !isCardBlocked, icon: User, color: 'text-amber-600 bg-amber-50/60 border-amber-200' },
-            { label: 'Senior Advocate', sub: 'Not Enrolled', active: false, icon: Award, color: 'text-slate-400 bg-slate-50 border-slate-200' },
-            { label: 'Advocate-on-Record', sub: 'Eligible', active: !isCardBlocked, icon: Scale, color: 'text-blue-600 bg-blue-50/60 border-blue-200' },
-            { label: 'Law Officer', sub: 'Registered', active: !isCardBlocked, icon: Landmark, color: 'text-emerald-600 bg-emerald-50/60 border-emerald-200' },
-            { label: 'Government Counsel', sub: 'Registered', active: !isCardBlocked, icon: FileText, color: 'text-sky-600 bg-sky-50/60 border-sky-200' },
-            { label: 'Public Prosecutor', sub: 'Not Regist.', active: false, icon: Shield, color: 'text-slate-400 bg-slate-50 border-slate-200' },
-            { label: 'Legal Consultant', sub: 'Registered', active: !isCardBlocked, icon: User, color: 'text-indigo-600 bg-indigo-50/70 border-indigo-200' },
-            { label: 'Corporate Counsel', sub: 'Registered', active: !isCardBlocked, icon: ShieldAlert, color: 'text-teal-600 bg-teal-50/70 border-teal-200' },
-          ].map((item, idx) => {
+          {classifications.map((item, idx) => {
             const IconComponent = item.icon;
             return (
               <div 
                 key={idx} 
-                className={`px-2 py-1.5 rounded-lg border flex items-center gap-2 justify-start transition-all min-w-0 ${item.color}`}
+                className={`px-2.5 py-2 rounded-lg border flex items-center gap-2.5 justify-start transition-all min-w-0 ${item.color}`}
               >
-                <IconComponent size={13} className="shrink-0 opacity-95" />
-                <div className="min-w-0 flex-1">
-                  <p className="text-[9px] font-bold leading-tight text-slate-800 truncate w-full">{item.label}</p>
-                  <p className="text-[8px] font-medium opacity-75 mt-0.5 truncate w-full">
+                <IconComponent size={14} className="shrink-0 opacity-95" />
+                <div className="min-w-0 flex-1 text-left">
+                  <p className="text-[10px] font-bold leading-tight text-slate-800 truncate w-full">{item.label}</p>
+                  <p className="text-[9px] font-medium opacity-75 mt-0.5 truncate w-full">
                     {isCardBlocked && item.active ? 'Suspended' : item.sub}
                   </p>
                 </div>
@@ -1275,33 +2138,39 @@ export default function TopRowSection({ isCardBlocked }) {
         </div>
       </CardWrapper>
 
-      {/* 3. BAR COUNCIL VERIFICATION MODULE */}
+      {/* CARD 3: BAR COUNCIL CHECKLIST VERIFICATION LEDGER */}
       <CardWrapper title="Bar Council Verification" badge={isCardBlocked ? "Suspended" : "Verified"}>
-        <div className="space-y-2 text-xs h-full flex flex-col justify-between min-h-[200px] sm:min-h-[220px] w-full">
-          {[
-            { label: 'Bar Council Verification', status: isCardBlocked ? 'Suspended' : 'Verified', color: isCardBlocked ? 'text-red-600 font-bold' : 'text-emerald-600 font-bold' },
-            { label: 'Enrollment Date', status: '15 Aug 2012', color: 'text-slate-700 font-medium' },
-            { label: 'License Validity', status: '31 Dec 2025', color: isCardBlocked ? 'text-slate-400 line-through' : 'text-slate-700 font-bold' },
-            { label: 'Renewal Status', status: isCardBlocked ? 'Hold' : 'Up To Date', color: isCardBlocked ? 'text-red-500' : 'text-emerald-600 font-semibold' },
-            { label: 'Continuing Legal Education', status: isCardBlocked ? 'Suspended' : 'Completed', color: isCardBlocked ? 'text-slate-400' : 'text-blue-600 font-medium' },
-            { label: 'Disciplinary Record', status: isCardBlocked ? 'Review Pending' : 'No Record Found', color: isCardBlocked ? 'text-amber-600' : 'text-emerald-600 font-medium' },
-          ].map((row, idx) => (
-            <div key={idx} className="flex items-center justify-between py-1.5 border-b border-slate-100 last:border-0 text-[10px] sm:text-[11px] w-full gap-2">
-              <div className="flex items-center gap-1.5 text-slate-500 min-w-0 flex-1">
-                <CheckCircle size={12} className={`shrink-0 ${isCardBlocked ? 'text-slate-300' : 'text-emerald-500 fill-emerald-50'}`} />
-                <span className="truncate font-medium text-slate-600">{row.label}</span>
+        <div className="space-y-2 text-xs h-full flex flex-col justify-between min-h-[220px] w-full">
+          {verificationChecks.map((row, idx) => {
+            let statusColor = "text-slate-700 font-medium";
+            if (isCardBlocked && row.label !== 'Enrollment Date') {
+              statusColor = "text-slate-400 line-through";
+            } else if (row.variant === 'success') {
+              statusColor = isCardBlocked ? 'text-red-500' : 'text-emerald-600 font-semibold';
+            } else if (row.variant === 'info') {
+              statusColor = isCardBlocked ? 'text-slate-400' : 'text-blue-600 font-semibold';
+            } else if (row.variant === 'neutral_bold') {
+              statusColor = 'text-slate-700 font-bold';
+            }
+
+            return (
+              <div key={idx} className="flex items-center justify-between py-1.5 border-b border-slate-100 last:border-0 text-[11px] w-full gap-2">
+                <div className="flex items-center gap-2 text-slate-500 min-w-0 flex-1">
+                  <CheckCircle size={13} className={`shrink-0 ${isCardBlocked ? 'text-slate-300' : 'text-emerald-500 fill-emerald-50'}`} />
+                  <span className="truncate font-medium text-slate-600 text-left">{row.label}</span>
+                </div>
+                <span className={`text-[10px] shrink-0 font-mono text-right ${statusColor}`}>{row.status}</span>
               </div>
-              <span className={`text-[9px] sm:text-[10px] shrink-0 font-mono text-right ${row.color}`}>{row.status}</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </CardWrapper>
 
-      {/* 4. DIGITAL NFC IDENTITY SMART CARD VIEW */}
+      {/* CARD 4: GRAPHICAL SMART NFC IDENTITY CARD BLOCK */}
       <CardWrapper title="NFC Identity Card">
         <div className="flex flex-col h-full justify-between min-h-[220px] w-full">
           
-          {/* Main Card graphic layered canvas */}
+          {/* Main Visual Physical Card Base Container */}
           <div className={`w-full aspect-[1.586/1] rounded-xl p-3.5 text-white relative overflow-hidden shadow-xs flex flex-col justify-between transition-all duration-500 select-none ${
             isCardBlocked 
               ? 'from-[#2b080a] via-[#4a1014] to-[#1a0305] border border-red-900 shadow-sm' 
@@ -1309,61 +2178,65 @@ export default function TopRowSection({ isCardBlocked }) {
           }`}>
             <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-linear-to-l from-white/[0.04] to-transparent skew-x-12 pointer-events-none transform origin-top-right" />
             
-            {/* Header properties */}
+            {/* Header Identity Elements */}
             <div className="flex justify-between items-start w-full relative z-10">
-              <div className="flex items-center gap-1.5">
-                <Landmark size={13} className={isCardBlocked ? 'text-red-400' : 'text-slate-100'} />
-                <div className="leading-tight">
-                  <h5 className="text-[8px] sm:text-[9px] font-black tracking-widest text-white uppercase">Advocate</h5>
-                  <p className="text-[5px] sm:text-[6px] text-white/50 tracking-wider font-bold uppercase">Identity Card</p>
+              <div className="flex items-center gap-2">
+                <Landmark size={14} className={isCardBlocked ? 'text-red-400' : 'text-slate-100'} />
+                <div className="leading-tight text-left">
+                  <h5 className="text-[9px] font-black tracking-widest text-white uppercase">Advocate</h5>
+                  <p className="text-[6px] text-white/50 tracking-wider font-bold uppercase">Identity Card</p>
                 </div>
               </div>
               <div className={isCardBlocked ? 'text-red-500/40' : 'text-white/80'}>
-                <Wifi size={14} className="rotate-90 transform" />
+                <Wifi size={16} className="rotate-90 transform" />
               </div>
             </div>
 
-            {/* Absolute element spatial placement slot row */}
-            <div className="relative h-11 w-full flex items-center justify-between z-10 px-0.5">
+            {/* Middle Spatial Core Row for Microchip and Rings */}
+            <div className="relative h-12 w-full flex items-center justify-between z-10 px-0.5">
               <div className="shrink-0">
-                <div className="w-7 h-5.5 rounded-sm bg-linear-to-br from-[#ffe082] via-[#ffd54f] to-[#c69a1c] relative p-0.5 border border-[#d4af37]/30 overflow-hidden">
+                <div className="w-7.5 h-6 rounded bg-linear-to-br from-[#ffe082] via-[#ffd54f] to-[#c69a1c] relative p-0.5 border border-[#d4af37]/40 shadow-xs overflow-hidden">
                   <div className="w-full h-[1px] bg-black/10 absolute top-1/2 left-0" />
                   <div className="w-[1px] h-full bg-black/10 absolute left-1/3 top-0" />
                 </div>
               </div>
 
-              {/* Centered User ring node offset */}
-              <div className="absolute right-12 sm:right-14 bottom-0">
-                <div className={`w-10 h-10 rounded-full border bg-slate-100 flex items-center justify-center overflow-hidden shadow-xs relative ${
-                  isCardBlocked ? 'border-red-500/40' : 'border-white/80'
+              {/* Precise Dynamic Mask Slot Syncing User Profile Picture */}
+              <div className="absolute right-14 bottom-0">
+                <div className={`w-11 h-11 rounded-full border-1.5 bg-slate-100 flex items-center justify-center overflow-hidden shadow-xs relative ${
+                  isCardBlocked ? 'border-red-500/50' : 'border-white/90'
                 }`}>
-                  <User size={22} className="text-slate-400 mt-2" />
+                  <img 
+                    src={profileImage} 
+                    alt="Mini Badge View" 
+                    className="w-full h-full object-cover object-top"
+                  />
                   {isCardBlocked && (
                     <div className="absolute inset-0 bg-red-950/60 flex items-center justify-center">
-                      <ShieldX size={10} className="text-red-400" />
+                      <ShieldX size={12} className="text-red-400" />
                     </div>
                   )}
                 </div>
               </div>
 
               <div className="shrink-0">
-                <div className="w-8 h-8 bg-white p-0.5 rounded flex items-center justify-center">
-                  <QrCode size={26} className={isCardBlocked ? 'text-red-950' : 'text-[#061434]'} />
+                <div className="w-8.5 h-8.5 bg-white p-0.5 rounded flex items-center justify-center shadow-xs">
+                  <QrCode size={30} className={isCardBlocked ? 'text-red-950' : 'text-[#061434]'} />
                 </div>
               </div>
             </div>
 
-            {/* Inner bottom data tags */}
-            <div className="w-full relative z-10 flex justify-between items-end border-t border-white/10 pt-1">
-              <div className="text-left min-w-0 flex-1 pr-2">
-                <h6 className="text-[9px] sm:text-[10px] font-bold tracking-wide text-white leading-none uppercase truncate">
-                  Adv. Rohit Sharma
+            {/* Inside Footer Row Credentials */}
+            <div className="w-full relative z-10 flex justify-between items-end border-t border-white/10 pt-1 text-left">
+              <div className="min-w-0 flex-1 pr-2">
+                <h6 className="text-[10px] font-extrabold tracking-wide text-white leading-none uppercase truncate">
+                  {advocateData.title}
                 </h6>
-                <p className="text-[7px] text-white/60 font-mono tracking-tight mt-0.5 truncate">
-                  MH/4789/2012
+                <p className="text-[7.5px] text-white/60 font-mono tracking-tight mt-0.5 truncate">
+                  {advocateData.enrollmentNo}
                 </p>
               </div>
-              <span className={`text-[5px] sm:text-[6px] font-black px-1.5 py-0.5 rounded-xs uppercase tracking-wider shrink-0 border ${
+              <span className={`text-[6px] font-black px-1.5 py-0.5 rounded-xs uppercase tracking-wider shrink-0 border ${
                 isCardBlocked ? 'bg-red-500/10 border-red-500/30 text-red-300' : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300'
               }`}>
                 {isCardBlocked ? 'Blocked' : 'Active'}
@@ -1371,38 +2244,40 @@ export default function TopRowSection({ isCardBlocked }) {
             </div>
           </div>
 
-          {/* Core Table Grid Elements Metadata specs panels */}
-          <div className="space-y-1 mt-3 text-[10px] sm:text-[11px] border-t border-slate-100 pt-2 font-medium w-full">
-            <div className="grid grid-cols-2 gap-x-3 gap-y-1">
+          {/* Sub-Card Data Metrics Table Panel Layer */}
+          <div className="space-y-1.5 mt-3 text-[11px] border-t border-slate-100 pt-2 font-medium w-full text-left">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
               <div>
                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Card ID</span>
-                <span className="font-mono text-slate-700 block truncate font-bold">AIC-IND-2025-123456</span>
+                <span className="font-mono text-slate-700 block truncate font-bold text-[10.5px]">{nfcCardSpecs.cardId}</span>
               </div>
               <div>
                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Card Type</span>
-                <span className="text-slate-700 block truncate font-bold">NFC + QR Hybrid</span>
+                <span className="text-slate-700 block truncate font-bold text-[10.5px]">{nfcCardSpecs.cardType}</span>
               </div>
               
-              <div className="pt-0.5">
+              <div>
                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Card Status</span>
-                <span className={`font-black block truncate ${isCardBlocked ? 'text-red-600' : 'text-emerald-600'}`}>
+                <span className={`font-black block truncate text-[10.5px] ${isCardBlocked ? 'text-red-600' : 'text-emerald-600'}`}>
                   {isCardBlocked ? 'Suspended' : 'Active'}
                 </span>
               </div>
-              <div className="pt-0.5">
+              <div>
                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Issue Date</span>
-                <span className="text-slate-700 block truncate font-bold">01 Jan 2025</span>
+                <span className="text-slate-700 block truncate font-bold text-[10.5px]">{nfcCardSpecs.issueDate}</span>
               </div>
 
-              <div className="pt-0.5">
+              <div>
                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Expiry Date</span>
-                <span className={`font-bold block truncate ${isCardBlocked ? 'text-red-500/70 line-through' : 'text-slate-700'}`}>
-                  31 Dec 2025
+                <span className={`font-bold block truncate text-[10.5px] ${isCardBlocked ? 'text-red-500/70 line-through' : 'text-slate-700'}`}>
+                  {advocateData.metrics.renewalValid}
                 </span>
               </div>
-              <div className="pt-0.5">
+              <div>
                 <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wide">Security Level</span>
-                <span className="text-slate-700 block truncate font-black">{isCardBlocked ? 'REVOKED' : 'High'}</span>
+                <span className={`font-black block truncate text-[10.5px] ${isCardBlocked ? 'text-red-600' : 'text-emerald-600'}`}>
+                  {isCardBlocked ? 'REVOKED' : nfcCardSpecs.securityLevel}
+                </span>
               </div>
             </div>
           </div>
