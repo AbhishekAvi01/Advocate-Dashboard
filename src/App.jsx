@@ -57,7 +57,7 @@ export default function App() {
   const [transactions, setTransactions] = useState(initialTransactions);
   const [documents, setDocuments] = useState(initialDocuments);
   
-  /
+  
   const [selectedCase, setSelectedCase] = useState(masterCasesList[0]);
   const [selectedClient, setSelectedClient] = useState(masterClientsList[0]);
 
