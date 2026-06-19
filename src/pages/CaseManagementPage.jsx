@@ -12,7 +12,7 @@ export default function CaseManagementPage() {
     insertCaseRecord, modifyCaseRecord, purgeCaseRecord, appendCaseEvent, removeCaseSubItem, clearAlertNode
   } = useCaseEngine();
 
-  // --- Workspace Navigation & View State Controls ---
+
   const [searchQuery, setSearchQuery] = useState('');
   const [priorityFilter, setPriorityFilter] = useState('All');
   const [statusFilter, setStatusFilter] = useState('All');
@@ -20,11 +20,10 @@ export default function CaseManagementPage() {
   const [selectedCaseId, setSelectedCaseId] = useState(cases[0]?.id || null);
   const [activeModal, setActiveModal] = useState(null); // { type, caseId }
 
-  // Sorting Matrix Configuration Constants
+ 
   const [sortField, setSortField] = useState('caseNumber');
   const [sortDir, setSortDir] = useState('asc');
-  
-  // Forms Transient Binding Trackers
+
   const [newCaseForm, setNewCaseForm] = useState({ caseNumber: '', cnr: '', caseTitle: '', clientName: '', clientPhone: '', clientEmail: '', opponentName: '', courtName: '', judgeName: '', filingDate: '2026-06-19', hearingDate: '', caseType: 'Civil Suit', description: '', priority: 'Medium', status: 'Active' });
   const [eventInput, setEventInput] = useState({ title: '', date: '2026-06-19', desc: '' });
   const [docInput, setFileFormInput] = useState({ name: '', type: 'Petition', size: '1.2 MB' });
@@ -33,7 +32,6 @@ export default function CaseManagementPage() {
 
   const activeCaseObject = cases.find(c => c.id === selectedCaseId) || cases[0];
 
-  // --- Real-time Metrics Layer Aggregations ---
   const countTotal = cases.length;
   const countActive = cases.filter(c => c.status === 'Active').length;
   const countPending = cases.filter(c => c.status === 'Pending').length;
@@ -41,7 +39,6 @@ export default function CaseManagementPage() {
   const countUrgent = cases.filter(c => c.priority === 'High' && c.status === 'Active').length;
   const countTodayHearings = cases.filter(c => c.nextHearing === '2026-06-19').length;
 
-  // --- Pipeline Search Array Evaluator Matrix ---
   const searchedAndFilteredCases = cases
     .filter(c => {
       const matchSearch = c.caseNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -72,10 +69,8 @@ export default function CaseManagementPage() {
 
   return (
     <div className="space-y-6 w-full text-slate-800 antialiased font-sans select-none pb-12">
-      
-      {/* ==================================================================== */}
-      {/* MODULE 1: TOP EXECUTIVE ANALYTICS RIBBON CARDS                      */}
-      {/* ==================================================================== */}
+     
+
       <div className="grid grid-cols-2 lg:grid-cols-6 gap-4 items-stretch w-full">
         {[
           { label: 'Total Base Load', data: countTotal, css: 'bg-white border-slate-200 text-slate-900' },
@@ -92,7 +87,7 @@ export default function CaseManagementPage() {
         ))}
       </div>
 
-      {/* Workspace Menu Bar Tab Selectors */}
+      
       <div className="flex border-b border-slate-200 gap-2">
         {['registry', 'calendar', 'analytics'].map(tab => (
           <button
@@ -107,13 +102,10 @@ export default function CaseManagementPage() {
         ))}
       </div>
 
-      {/* ==================================================================== */}
-      {/* MAIN VIEW SCREEN DISCRIMINATOR WORKSPACE INTERFACES                  */}
-      {/* ==================================================================== */}
+     
       {activeWorkspaceTab === 'registry' && (
         <div className="space-y-6 w-full animate-in fade-in duration-200">
-          
-          {/* SEARCH SYSTEM AND COMMAND BAR CONTROLS */}
+         
           <div className="bg-white border border-slate-200 rounded-xl p-4 flex flex-col xl:flex-row lg:items-center justify-between gap-4 shadow-3xs w-full">
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
@@ -142,10 +134,10 @@ export default function CaseManagementPage() {
             </div>
           </div>
 
-          {/* DUAL COUPLER PANEL PANES WORKSPACE */}
+         
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start w-full">
             
-            {/* Left Ledger Card List Column */}
+            
             <div className="xl:col-span-2 space-y-3">
               <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-3xs">
                 <div className="p-3 bg-slate-50/80 border-b text-[10px] font-black uppercase text-slate-400 text-left">Active Search Match Result Matrices</div>
@@ -184,11 +176,11 @@ export default function CaseManagementPage() {
               </div>
             </div>
 
-            {/* Right Pane Container Detailed Dossier Inspector Sheet */}
+            
             {activeCaseObject && (
               <div className="space-y-4 animate-in fade-in duration-300">
                 
-                {/* Section A: Core Metrics Summary Case Details */}
+               
                 <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-3xs space-y-4 text-left">
                   <div className="border-b pb-3 flex justify-between items-start gap-2">
                     <div>
@@ -213,7 +205,7 @@ export default function CaseManagementPage() {
                   </div>
                 </div>
 
-                {/* Section B: Nested Actions Tabs Quick Toggles */}
+               
                 <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-3xs text-left space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
                     <h5 className="text-xs font-black uppercase tracking-wider text-slate-900">Chamber Records Core</h5>
@@ -224,10 +216,10 @@ export default function CaseManagementPage() {
                     </div>
                   </div>
 
-                  {/* Operational Multi-lists Renders */}
+                  
                   <div className="space-y-4 max-h-[300px] overflow-y-auto pr-1">
                     
-                    {/* Timeline Log Output nested row loop */}
+                   
                     <div className="space-y-2">
                       <p className="text-[9px] font-black tracking-wider text-slate-400 uppercase">Chronological History Ledger Trail</p>
                       {(activeCaseObject.timeline || []).map(timeNode => (
@@ -241,7 +233,7 @@ export default function CaseManagementPage() {
                       ))}
                     </div>
 
-                    {/* Vault Documents nested attachments row loop */}
+                    
                     <div className="space-y-2 pt-2 border-t border-slate-50">
                       <p className="text-[9px] font-black tracking-wider text-slate-400 uppercase">Cryptographic Attachment Bindings</p>
                       {(activeCaseObject.documents || []).map(fileNode => (
@@ -253,7 +245,6 @@ export default function CaseManagementPage() {
                       ))}
                     </div>
 
-                    {/* Advocate localized pins notes section */}
                     <div className="space-y-2 pt-2 border-t border-slate-50">
                       <p className="text-[9px] font-black tracking-wider text-slate-400 uppercase">Advocate Localized Pinned Notes</p>
                       {(activeCaseObject.notes || []).map(noteNode => (
@@ -275,9 +266,7 @@ export default function CaseManagementPage() {
         </div>
       )}
 
-      {/* ==================================================================== */}
-      {/* MODULE 2: INTERACTIVE HEARING CALENDAR LAYOUT SHEET                  */}
-      {/* ==================================================================== */}
+      
       {activeWorkspaceTab === 'calendar' && (
         <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-3xs space-y-4 animate-in fade-in duration-200">
           <div className="flex justify-between items-center border-b pb-2">
@@ -315,9 +304,6 @@ export default function CaseManagementPage() {
         </div>
       )}
 
-      {/* ==================================================================== */}
-      {/* MODULE 3: CASE ANALYTICS DASHBOARD CHART ENGINE LAYER                */}
-      {/* ==================================================================== */}
       {activeWorkspaceTab === 'analytics' && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full animate-in fade-in duration-200 text-left">
           <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-3xs space-y-4">
@@ -347,9 +333,7 @@ export default function CaseManagementPage() {
         </div>
       )}
 
-      {/* ==================================================================== */}
-      {/* INTERACTIVE FLOATING OVERLAY DIALOG MODALS CONTAINER MANAGER         */}
-      {/* ==================================================================== */}
+      
       {activeModal && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white border border-slate-200 rounded-xl w-full max-w-md p-5 shadow-2xl text-left animate-in zoom-in-95 duration-150">
@@ -361,7 +345,7 @@ export default function CaseManagementPage() {
 
             <div className="text-xs font-semibold text-slate-600 max-h-[400px] overflow-y-auto pr-1">
               
-              {/* Form 1: Add New Case Brief Data */}
+            
               {activeModal.type === 'add_case' && (
                 <form onSubmit={commitNewCaseDispatch} className="space-y-3 text-left">
                   <div className="grid grid-cols-2 gap-2">
@@ -391,7 +375,7 @@ export default function CaseManagementPage() {
                 </form>
               )}
 
-              {/* Form 2: Append Event Node */}
+             
               {activeModal.type === 'add_event' && (
                 <form onSubmit={(e) => {
                   e.preventDefault();
@@ -405,7 +389,7 @@ export default function CaseManagementPage() {
                 </form>
               )}
 
-              {/* Form 3: Attach Document Mock Token */}
+             
               {activeModal.type === 'attach_doc' && (
                 <form onSubmit={(e) => {
                   e.preventDefault();
@@ -420,7 +404,7 @@ export default function CaseManagementPage() {
                 </form>
               )}
 
-              {/* Form 4: Add Pinned Workspace Note */}
+             
               {activeModal.type === 'add_note' && (
                 <form onSubmit={(e) => {
                   e.preventDefault();

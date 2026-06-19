@@ -12,32 +12,31 @@ export default function WalletPaymentsPage() {
     addWalletFunds, commitDirectPayment, registerNewInvoice, setAutoPay, clearAlert
   } = useFinTechEngine();
 
-  // Workspace View Tabs Controllers
-  const [activeTab, setActiveTab] = useState('overview'); // 'overview' | 'invoices' | 'expenses'
-  const [activeModal, setActiveModal] = useState(null); // { type, data }
+  
+  const [activeTab, setActiveTab] = useState('overview'); 
+  const [activeModal, setActiveModal] = useState(null); 
   const [txnSearch, setTxnSearch] = useState('');
   const [txnFilter, setTxnFilter] = useState('All');
 
-  // Input states tracking variables
+  
   const [fundsAmount, setFundsAmount] = useState('');
   const [payMethod, setPayMethod] = useState('UPI');
   const [courtFeeAmount, setCourtFeeAmount] = useState('');
   const [targetFeeCategory, setTargetFeeCategory] = useState('Court Fees');
   const [invoiceForm, setInvoiceForm] = useState({ clientName: '', service: '', amount: '', dueDate: '2026-06-30' });
 
-  // Statistical metrics compilation loops
   const calculatedTotalExpenses = expenses.reduce((sum, item) => sum + item.amount, 0);
   const monthlySpendingTotal = transactions.filter(t => t.type === 'Debit' && t.status === 'Success').reduce((sum, item) => sum + item.amount, 0);
   const aggregateTxnCount = transactions.length;
 
-  // Search filter pipelines evaluation matrix array
+
   const activeFilteredTransactions = transactions.filter(t => {
     const matchesSearch = t.id.toLowerCase().includes(txnSearch.toLowerCase()) || t.category.toLowerCase().includes(txnSearch.toLowerCase());
     const matchesCategory = txnFilter === 'All' || t.type === txnFilter;
     return matchesSearch && matchesCategory;
   });
 
-  // Programmable PDF Download Simulator
+
   const executeReceiptDownload = (txn) => {
     try {
       const mockReceiptLayout = `%PDF-1.4\n1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R >>\nendobj\n4 0 obj\n<< /Length 120 >>\nstream\nBT\n/F1 12 Tf\n72 750 Td\n(NATIONAL ADVOCATE IDENTITY LEDGER - PAYMENT RECEIPT) Tj\n72 720 Td\n(Transaction Token ID: ${txn.id}) Tj\n72 700 Td\n(Settlement Date Node: ${txn.date}) Tj\n72 680 Td\n(Allocation Classification: ${txn.category}) Tj\n72 660 Td\n(Net Volume Capital: INR ${txn.amount.toFixed(2)}) Tj\n72 640 Td\n(GST Parameters: ${txn.gst}) Tj\n72 620 Td\n(Handshake Mode: ${txn.method} - SUCCESS) Tj\nET\nendstream\nendobj\nxref\n0 5\n0000000000 65535 f\n0000000009 00000 n\n0000000056 00000 n\n0000000111 00000 n\n0000000212 00000 n\ntrailer\n<< /Size 5 /Root 1 0 R >>\nstartxref\n0000000395\n%%EOF`;
@@ -66,7 +65,7 @@ export default function WalletPaymentsPage() {
   return (
     <div className="space-y-6 w-full text-slate-800 antialiased select-none font-sans pb-12 text-left">
       
-      {/* TOAST SYSTEM PORTAL NODE OVERLAY MAPPING */}
+    
       <div className="fixed bottom-5 right-5 z-50 space-y-2 max-w-sm w-full">
         {notifications.map(toast => (
           <div key={toast.id} className="bg-slate-900 text-white p-3 rounded-xl shadow-xl flex items-center justify-between gap-3 animate-in slide-in-from-bottom-5">
@@ -76,9 +75,7 @@ export default function WalletPaymentsPage() {
         ))}
       </div>
 
-      {/* ==================================================================== */}
-      {/* FINTECH BALANCES OVERVIEW METRIC GRID STRIPS                         */}
-      {/* ==================================================================== */}
+     
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch w-full">
         <div className="p-4 border border-emerald-100 rounded-xl bg-linear-to-br from-emerald-600 to-teal-800 text-white shadow-md flex flex-col justify-between">
           <span className="text-[10px] font-black uppercase tracking-wider text-emerald-100/80 flex items-center gap-1.5"><Wallet size={12} /> Available Core Wallet Capital</span>
@@ -98,7 +95,7 @@ export default function WalletPaymentsPage() {
         ))}
       </div>
 
-      {/* Dynamic Tab Switching Strip Layer */}
+  
       <div className="flex border-b border-slate-200 gap-2">
         {['overview', 'invoices', 'expenses'].map(tabId => (
           <button
@@ -113,13 +110,11 @@ export default function WalletPaymentsPage() {
         ))}
       </div>
 
-      {/* ==================================================================== */}
-      {/* VIEW LAYER TAB SEGMENTATION DISCRIMINATOR SCHEMAS                   */}
-      {/* ==================================================================== */}
+      
       {activeTab === 'overview' && (
         <div className="space-y-6 w-full animate-in fade-in duration-200">
           
-          {/* FAST ACTION ROUTER BUTTON STRIPS */}
+         
           <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-3xs">
             <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 block mb-3">Instant Operational Triggers</span>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -130,10 +125,10 @@ export default function WalletPaymentsPage() {
             </div>
           </div>
 
-          {/* SPLIT TWIN DASHBOARD BLOCKS SHEET CANVAS */}
+         
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start w-full">
             
-            {/* Left Hand Block Card: Professional Transaction Ledger Audit Sheet */}
+            
             <div className="xl:col-span-2 bg-white border border-slate-200 rounded-xl p-5 shadow-3xs space-y-4">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b pb-3">
                 <h4 className="text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-1.5"><Activity size={14} className="text-blue-600" /> Transaction Audit Trail & Clearing Settlement Log</h4>
@@ -178,7 +173,7 @@ export default function WalletPaymentsPage() {
               </div>
             </div>
 
-            {/* Right Hand Side Control Panel block: Automations Settings Configuration Sheets */}
+            
             <div className="space-y-4">
               <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-3xs text-left space-y-3">
                 <h4 className="text-xs font-black uppercase tracking-wider text-slate-900 border-b pb-2">Central Automated Mandate Controls</h4>
@@ -207,9 +202,7 @@ export default function WalletPaymentsPage() {
         </div>
       )}
 
-      {/* ==================================================================== */}
-      {/* INVOICE HUB RENDER SEGMENT SHEET CANVAS                              */}
-      {/* ==================================================================== */}
+      
       {activeTab === 'invoices' && (
         <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-3xs space-y-4 animate-in fade-in duration-200">
           <div className="flex justify-between items-center border-b pb-3">
@@ -251,9 +244,7 @@ export default function WalletPaymentsPage() {
         </div>
       )}
 
-      {/* ==================================================================== */}
-      {/* CHAMBER EXPENSES MANAGEMENT TAB LAYER                                */}
-      {/* ==================================================================== */}
+      
       {activeTab === 'expenses' && (
         <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-3xs space-y-4 animate-in fade-in duration-200">
           <div className="border-b pb-3 text-left">
@@ -275,9 +266,7 @@ export default function WalletPaymentsPage() {
         </div>
       )}
 
-      {/* ==================================================================== */}
-      {/* MASTER CENTRAL INTERACTIVE FLOATING OVERLAY MODAL HUB INTERFACES     */}
-      {/* ==================================================================== */}
+      
       {activeModal && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white border border-slate-200 rounded-xl w-full max-w-md p-5 shadow-2xl text-left animate-in zoom-in-95 duration-150">
@@ -288,7 +277,7 @@ export default function WalletPaymentsPage() {
 
             <div className="text-xs font-semibold text-slate-600 max-h-[400px] overflow-y-auto pr-1">
               
-              {/* Form Option 1: Top-up / Add Money Allocation UI Overlay form */}
+             
               {activeModal.type === 'add_money' && (
                 <form onSubmit={e => {
                   e.preventDefault();
@@ -307,7 +296,7 @@ export default function WalletPaymentsPage() {
                 </form>
               )}
 
-              {/* Form Option 2: Pay Custom Fees Registry Portal */}
+             
               {activeModal.type === 'pay_fee' && (
                 <form onSubmit={e => {
                   e.preventDefault();
@@ -328,7 +317,7 @@ export default function WalletPaymentsPage() {
                 </form>
               )}
 
-              {/* Form Option 3: Create Chamber Billing Invoice profile */}
+             
               {activeModal.type === 'create_invoice' && (
                 <form onSubmit={e => {
                   e.preventDefault();
@@ -344,11 +333,11 @@ export default function WalletPaymentsPage() {
                 </form>
               )}
 
-              {/* Form Option 4: UPI Scan Overlay Simulation QR */}
+            
               {activeModal.type === 'upi_scan' && (
                 <div className="text-center py-4 space-y-4">
                   <div className="w-40 h-40 border border-slate-200 rounded-xl bg-slate-50 mx-auto flex items-center justify-center p-2">
-                    {/* Simulated vector graphic engine mesh structure */}
+               
                     <div className="w-full h-full bg-slate-200 flex flex-col justify-center items-center text-slate-500 font-mono text-[9px] font-black rounded-lg">UPI_DYNAMIC_QR_GATEWAY</div>
                   </div>
                   <p className="text-slate-500 leading-normal max-w-xs mx-auto text-[11px] font-medium">Scan token address points utilizing banking infrastructure handlers to clear instant retainers parameters directly into secure node cells.</p>

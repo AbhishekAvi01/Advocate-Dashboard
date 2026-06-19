@@ -26,7 +26,7 @@ export function LegalCalendarProvider({ children }) {
     return saved ? JSON.parse(saved) : initialTasksMock;
   });
 
-  const [availability, setAvailability] = useState('In Court'); // 'Available' | 'Busy' | 'In Court'
+  const [availability, setAvailability] = useState('In Court'); 
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => { localStorage.setItem('legal_erp_calendar_events', JSON.stringify(events)); }, [events]);

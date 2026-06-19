@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const CaseManagementContext = createContext();
 
-// --- Production-Grade Mock Dataset & System Schemas ---
+
 const initialCasesMock = [
   {
     id: 'CASE-2026-001',
@@ -118,7 +118,7 @@ export function CaseManagementProvider({ children }) {
   useEffect(() => { localStorage.setItem('legal_erp_deadlines', JSON.stringify(deadlines)); }, [deadlines]);
   useEffect(() => { localStorage.setItem('legal_erp_alerts', JSON.stringify(notifications)); }, [notifications]);
 
-  // --- Dynamic Action Mutations (CRUD) ---
+  
   const insertCaseRecord = (form) => {
     const prepped = {
       ...form,
@@ -140,7 +140,7 @@ export function CaseManagementProvider({ children }) {
     setCases(prev => prev.filter(c => c.id !== id));
   };
 
-  // Chronological Nested Arrays Mutations
+  
   const appendCaseEvent = (caseId, item, arrayKey) => {
     setCases(prev => prev.map(c => {
       if (c.id === caseId) {

@@ -9,18 +9,17 @@ import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, 
 
 export default function ClientCRMPage() {
   const { clients, createClient, deleteClient, updateClient } = useClientCRM();
-  
-  // UI States
+
   const [view, setView] = useState('grid'); // 'grid' | 'profile'
   const [selectedClient, setSelectedClient] = useState(null);
   const [searchTerm, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState('All');
   const [isModalOpen, setModalOpen] = useState(false);
 
-  // Form State
+
   const [formData, setFormData] = useState({ name: '', type: 'Individual', email: '', phone: '', company: '', status: 'Active' });
 
-  // Filtering Logic
+  
   const filteredClients = clients.filter(c => {
     const matchesSearch = c.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           c.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -47,7 +46,6 @@ export default function ClientCRMPage() {
   return (
     <div className="space-y-6 w-full animate-in fade-in duration-300 text-left">
       
-      {/* 1. TOP CRM METRICS */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {[
           { label: 'Total Clients', count: clients.length, icon: Users, color: 'text-blue-600' },
@@ -67,7 +65,7 @@ export default function ClientCRMPage() {
 
       {view === 'grid' ? (
         <>
-          {/* 2. SEARCH & ACTION BAR */}
+         
           <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col lg:flex-row justify-between gap-4">
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-2.5 text-slate-400" size={18} />
@@ -97,7 +95,7 @@ export default function ClientCRMPage() {
             </div>
           </div>
 
-          {/* 3. CLIENT DIRECTORY GRID */}
+          
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {filteredClients.map(client => (
               <div key={client.id} className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all overflow-hidden group">
@@ -144,14 +142,14 @@ export default function ClientCRMPage() {
           </div>
         </>
       ) : (
-        /* 4. CLIENT PROFILE VIEW */
+        
         <div className="space-y-6 animate-in slide-in-from-right duration-300">
           <button onClick={() => setView('grid')} className="text-sm font-bold text-blue-600 flex items-center gap-1 hover:underline">
             ← Back to Directory
           </button>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Left: Info Card */}
+           
             <div className="lg:col-span-1 space-y-6">
               <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
                 <div className="w-24 h-24 rounded-full bg-blue-600 mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black">
@@ -185,9 +183,8 @@ export default function ClientCRMPage() {
               </div>
             </div>
 
-            {/* Right: Detailed Tabs */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Cases Section */}
+            
               <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                 <div className="p-4 border-b bg-slate-50/50 flex justify-between items-center">
                   <h4 className="text-sm font-black text-slate-800 flex items-center gap-2">
@@ -211,7 +208,7 @@ export default function ClientCRMPage() {
                 </div>
               </div>
 
-              {/* Timeline Section */}
+              
               <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
                  <h4 className="text-sm font-black text-slate-800 mb-6 flex items-center gap-2">
                     <Clock size={18} className="text-blue-600" /> Interaction Timeline
@@ -233,7 +230,7 @@ export default function ClientCRMPage() {
         </div>
       )}
 
-      {/* 5. MODAL: ADD CLIENT */}
+      
       {isModalOpen && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
